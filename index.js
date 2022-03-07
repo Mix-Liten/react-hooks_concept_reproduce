@@ -9,6 +9,7 @@ document.getElementById('btn-prop').addEventListener('click', () => {
 
 function renderComponent() {
   render(Component, { propCount }, document.getElementById('root'))
+  render(Component, { propCount }, document.getElementById('root2'))
 }
 
 renderComponent()
