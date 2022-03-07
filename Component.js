@@ -1,8 +1,8 @@
-import { useState, useEffect } from './LocalReact.js'
+import { useState, useEffect, useMemo } from './LocalReact.js'
 
 export default function Component({ propCount, buttonElem }) {
   const [count, setCount] = useState(0)
-  const propCountDoubled = 0
+  const propCountDoubled = useMemo(() => propCount * 2, [propCount])
 
   useEffect(() => {
     const handler = () => setCount(currentCount => currentCount + 1)
