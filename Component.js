@@ -1,12 +1,15 @@
-import { useState } from './LocalReact.js'
+import { useState, useEffect } from './LocalReact.js'
 
-export default function Component({ propCount }) {
+export default function Component({ propCount, buttonElem }) {
   const [count, setCount] = useState(0)
   const propCountDoubled = 0
 
-  setTimeout(() => {
-    setCount(currentCount => currentCount + 1)
-  }, 1e3)
+  useEffect(() => {
+    const handler = () => setCount(currentCount => currentCount + 1)
+    buttonElem.addEventListener('click', handler)
+
+    return () => buttonElem.removeEventListener('click', handler)
+  }, [buttonElem])
 
   return `
     State: ${count}
